@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Calendar, Clock, ChevronDown } from 'lucide-react';
-import { format, subHours, subDays } from 'date-fns';
+import { Clock, ChevronDown } from 'lucide-react';
+import { subHours, subDays } from 'date-fns';
 import { useAppStore } from '../../store/useAppStore';
 
 const PRESETS = [

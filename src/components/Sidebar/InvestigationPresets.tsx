@@ -1,4 +1,4 @@
-import { Zap, ShieldAlert, Globe, Lock } from 'lucide-react';
+import { Zap, ShieldAlert, Globe } from 'lucide-react';
 import { useAppStore } from '../../store/useAppStore';
 
 const PRESETS = [

@@ -1,4 +1,4 @@
-import { RelayRecord } from './relayService';
+import { type RelayRecord } from '../db/dexie';
 
 // --- Types ---
 
@@ -22,6 +22,7 @@ export interface CorrelationResult {
 
 // 1. SAX (Symbolic Aggregate approXimation) - Simplified
 // Converts a time series into a string of characters for fast approximate matching
+/*
 function calculateSAX(series: TimeSeriesPoint[], windowSize: number, alphabetSize: number = 5): string {
     if (series.length === 0) return '';
 
@@ -52,6 +53,7 @@ function calculateSAX(series: TimeSeriesPoint[], windowSize: number, alphabetSiz
         return symbols[4];
     }).join('');
 }
+*/
 
 // 2. DTW (Dynamic Time Warping)
 // Measures similarity between two temporal sequences that may vary in speed
@@ -79,6 +81,7 @@ function calculateDTW(seriesA: number[], seriesB: number[]): number {
 
 // 3. Bayesian Scoring
 // Combines multiple probabilities into a final posterior probability
+/*
 function calculateBayesianScore(priors: number[], likelihoods: number[]): number {
     // Simplified Naive Bayes for this context
     // P(Relay | Evidence) ∝ P(Evidence | Relay) * P(Relay)
@@ -91,6 +94,7 @@ function calculateBayesianScore(priors: number[], likelihoods: number[]): number
     // Normalize to 0-1 range roughly
     return Math.min(1.0, score);
 }
+*/
 
 // --- Service ---
 
@@ -99,7 +103,7 @@ export class AnalysisService {
     static async correlateTraffic(
         evidenceSeries: TimeSeriesPoint[],
         relays: RelayRecord[],
-        timeWindow: { start: Date, end: Date }
+        _timeWindow: { start: Date, end: Date }
     ): Promise<CorrelationResult[]> {
 
         console.log(`Analyzing ${relays.length} relays against evidence...`);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { db, RelayRecord, cacheRelays } from '../db/dexie';
+import { db, type RelayRecord, cacheRelays } from '../db/dexie';
 import { subHours, isBefore, parseISO } from 'date-fns';
 
 const ONIONOO_URL = 'https://onionoo.torproject.org/details';

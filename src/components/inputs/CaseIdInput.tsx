@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FileDigit, CheckCircle2, AlertCircle, ShieldAlert } from 'lucide-react';
+import { FileDigit, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useAppStore } from '../../store/useAppStore';
 
 export default function CaseIdInput() {

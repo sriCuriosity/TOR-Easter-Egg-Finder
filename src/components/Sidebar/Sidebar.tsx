@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Search, Play, RotateCcw, Globe, SlidersHorizontal } from 'lucide-react';
 import EvidenceUploader from '../evidence/EvidenceUploader';
 import SmartIPInput from '../inputs/SmartIPInput';

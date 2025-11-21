@@ -21,7 +21,7 @@ export default function MainPanel() {
         <main className="flex-1 bg-slate-900 relative flex flex-col overflow-hidden">
             {/* Graph View (Top) */}
             <div className="flex-1 relative border-b border-slate-800">
-                <RelayGraph data={results.candidates} />
+                <RelayGraph data={{ nodes: [], links: [] }} />
 
                 {/* Overlay Stats */}
                 <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur border border-slate-700 p-3 rounded-lg shadow-xl">
