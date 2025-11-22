@@ -2,6 +2,12 @@ import { useMutation } from '@tanstack/react-query';
 import { useAppStore } from '../store/useAppStore';
 import { RelayService } from '../services/relayService';
 import { AnalysisService, type TimeSeriesPoint } from '../services/analysisService';
+import type { RelayRecord } from '../db/dexie';
+
+interface ParsedSession {
+  startTime: number;
+  bytesTotal: number;
+}
 
 export const useRunAnalysis = () => {
   const {
@@ -20,10 +26,10 @@ export const useRunAnalysis = () => {
       if (evidence.parsedSessions.length > 0) {
         // Convert sessions to time series (bytes per second)
         // Simplified: Just taking start times and bytes
-        evidenceSeries = evidence.parsedSessions.map((s: any) => ({
+        evidenceSeries = (evidence.parsedSessions as ParsedSession[]).map((s) => ({
           timestamp: s.startTime,
           value: s.bytesTotal
-        })).sort((a: any, b: any) => a.timestamp - b.timestamp);
+        })).sort((a: TimeSeriesPoint, b: TimeSeriesPoint) => a.timestamp - b.timestamp);
       } else {
         // Fallback for demo if no file uploaded
         const now = Date.now();
@@ -45,7 +51,7 @@ export const useRunAnalysis = () => {
       // 4. Run Analysis
       const matches = await AnalysisService.correlateTraffic(
         evidenceSeries,
-        filteredRelays,
+        filteredRelays as RelayRecord[],
         { start: new Date(), end: new Date() } // TODO: Use actual window
       );
 

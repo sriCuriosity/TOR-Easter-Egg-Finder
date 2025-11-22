@@ -7,24 +7,17 @@ export default {
     theme: {
         extend: {
             colors: {
-                navy: {
-                    900: '#0a192f',
-                    800: '#112240',
-                    700: '#233554',
-                },
-                slate: {
-                    800: '#1e293b', // Sidebar bg
-                    900: '#0f172a', // Main bg
-                },
-                accent: {
-                    green: '#64ffda',
-                    red: '#ef4444',
-                    blue: '#3b82f6',
+                gov: {
+                    primary: '#1b2a4e',
+                    secondary: '#2e5aac',
+                    success: '#2e8540',
+                    warning: '#f0b429',
+                    danger: '#b50909'
                 }
             },
             fontFamily: {
                 mono: ['"Fira Code"', 'monospace'],
-                sans: ['Inter', 'sans-serif'],
+                sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
             }
         },
     },

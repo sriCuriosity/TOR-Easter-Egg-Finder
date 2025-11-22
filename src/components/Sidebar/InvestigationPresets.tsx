@@ -47,13 +47,13 @@ export default function InvestigationPresets() {
                 <button
                     key={preset.id}
                     onClick={() => updateFilters(preset.filters as any)}
-                    className="flex flex-col items-center gap-2 p-3 rounded-lg bg-slate-800/50 border border-slate-700 hover:bg-slate-800 hover:border-accent-blue/50 transition-all group text-center"
+                    className="flex flex-col items-center gap-2 p-3 rounded-lg bg-white border border-gray-200 hover:bg-gray-50 hover:border-gov-secondary/50 transition-all group text-center"
                     title={preset.description}
                 >
-                    <div className="p-2 rounded-full bg-slate-900 group-hover:bg-slate-800 transition-colors">
+                    <div className="p-2 rounded-full bg-gray-100 group-hover:bg-gray-200 transition-colors">
                         {preset.icon}
                     </div>
-                    <span className="text-[10px] font-medium text-slate-400 group-hover:text-slate-200">
+                    <span className="text-[10px] font-medium text-gray-700 group-hover:text-gray-900">
                         {preset.label}
                     </span>
                 </button>

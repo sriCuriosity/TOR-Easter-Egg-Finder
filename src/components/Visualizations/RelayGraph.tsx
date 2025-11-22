@@ -56,12 +56,12 @@ export default function RelayGraph({ data }: RelayGraphProps) {
                 graphData={data || MOCK_DATA}
                 nodeLabel="id"
                 nodeColor={(node: any) =>
-                    node.group === 'entry' ? '#3b82f6' :
-                        node.group === 'middle' ? '#10b981' :
-                            node.group === 'exit' ? '#ef4444' : '#cbd5e1'
+                    node.group === 'entry' ? '#2e5aac' :
+                        node.group === 'middle' ? '#2e8540' :
+                            node.group === 'exit' ? '#b50909' : '#6b7280'
                 }
-                linkColor={() => '#475569'}
-                backgroundColor="#0f172a"
+                linkColor={() => '#d1d5db'}
+                backgroundColor="#ffffff"
                 nodeRelSize={6}
                 linkWidth={(link: any) => link.value || 1}
                 linkDirectionalParticles={2}

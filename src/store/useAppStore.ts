@@ -55,6 +55,7 @@ export interface InvestigationResults {
   };
   status: 'idle' | 'analyzing' | 'complete' | 'error';
   error?: string;
+  graph?: { nodes: any[]; links: any[] };
 }
 
 export interface UIState {

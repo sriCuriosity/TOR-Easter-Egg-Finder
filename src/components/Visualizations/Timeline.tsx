@@ -29,53 +29,53 @@ export default function Timeline() {
                 <div className="flex items-center gap-2">
                     <button
                         onClick={() => setIsPlaying(!isPlaying)}
-                        className="p-1 rounded hover:bg-slate-700 text-accent-blue transition-colors"
+                        className="p-1 rounded hover:bg-gray-100 text-gov-secondary transition-colors"
                     >
                         {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                     </button>
-                    <span className="text-xs text-slate-400 font-mono">
+                    <span className="text-xs text-gray-600 font-mono">
                         {new Date().toLocaleTimeString()}
                     </span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <span className="text-xs text-slate-500">1x Speed</span>
-                    <SkipForward className="w-3 h-3 text-slate-500 cursor-pointer hover:text-white" />
+                    <span className="text-xs text-gray-600">1x Speed</span>
+                    <SkipForward className="w-3 h-3 text-gray-500 cursor-pointer hover:text-gray-700" />
                 </div>
             </div>
 
-            <div className="flex-1 relative bg-slate-800/30 rounded border border-slate-700/50 overflow-hidden mx-2 mb-2">
+            <div className="flex-1 relative bg-white rounded border border-gray-200 overflow-hidden mx-2 mb-2">
                 {/* Progress Bar */}
                 <div
-                    className="absolute top-0 left-0 h-full w-0.5 bg-accent-red/50 z-10 transition-all duration-100"
+                    className="absolute top-0 left-0 h-full w-0.5 bg-gov-danger/70 z-10 transition-all duration-100"
                     style={{ left: `${progress}%` }}
                 ></div>
 
                 {/* Tracks */}
                 <div className="absolute inset-0 flex flex-col justify-center gap-2 p-2">
                     {/* Entry Track */}
-                    <div className="h-6 bg-slate-800/50 rounded flex items-center px-2 relative">
-                        <span className="text-[10px] text-slate-500 w-12">Entry</span>
+                    <div className="h-6 bg-gray-100 rounded flex items-center px-2 relative">
+                        <span className="text-[10px] text-gray-600 w-12">Entry</span>
                         <div className="flex-1 relative h-full">
                             {MOCK_EVENTS.filter(e => e.node.startsWith('entry')).map(e => (
-                                <div key={e.id} className="absolute top-1 h-4 bg-blue-500/40 rounded" style={{ left: `${(e.id * 10) + 5}%`, width: '5%' }}></div>
+                                <div key={e.id} className="absolute top-1 h-4 bg-gov-secondary/30 rounded" style={{ left: `${(e.id * 10) + 5}%`, width: '5%' }}></div>
                             ))}
                         </div>
                     </div>
                     {/* Middle Track */}
-                    <div className="h-6 bg-slate-800/50 rounded flex items-center px-2 relative">
-                        <span className="text-[10px] text-slate-500 w-12">Middle</span>
+                    <div className="h-6 bg-gray-100 rounded flex items-center px-2 relative">
+                        <span className="text-[10px] text-gray-600 w-12">Middle</span>
                         <div className="flex-1 relative h-full">
                             {MOCK_EVENTS.filter(e => e.node.startsWith('middle')).map(e => (
-                                <div key={e.id} className="absolute top-1 h-4 bg-green-500/40 rounded" style={{ left: `${(e.id * 10) + 15}%`, width: '5%' }}></div>
+                                <div key={e.id} className="absolute top-1 h-4 bg-gov-success/30 rounded" style={{ left: `${(e.id * 10) + 15}%`, width: '5%' }}></div>
                             ))}
                         </div>
                     </div>
                     {/* Exit Track */}
-                    <div className="h-6 bg-slate-800/50 rounded flex items-center px-2 relative">
-                        <span className="text-[10px] text-slate-500 w-12">Exit</span>
+                    <div className="h-6 bg-gray-100 rounded flex items-center px-2 relative">
+                        <span className="text-[10px] text-gray-600 w-12">Exit</span>
                         <div className="flex-1 relative h-full">
                             {MOCK_EVENTS.filter(e => e.node.startsWith('exit')).map(e => (
-                                <div key={e.id} className="absolute top-1 h-4 bg-red-500/40 rounded" style={{ left: `${(e.id * 10) + 25}%`, width: '5%' }}></div>
+                                <div key={e.id} className="absolute top-1 h-4 bg-gov-danger/30 rounded" style={{ left: `${(e.id * 10) + 25}%`, width: '5%' }}></div>
                             ))}
                         </div>
                     </div>

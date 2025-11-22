@@ -1,6 +1,17 @@
 import axios from 'axios';
 import type { Relay } from '../types/Relay';
 
+interface OnionooRelay {
+    fingerprint: string;
+    or_addresses: string[];
+    nickname: string;
+    flags: string[];
+    last_seen: string;
+    country?: string;
+    running: boolean;
+    consensus_weight: number;
+}
+
 interface FetchFilters {
     country?: string;
     timestamp?: Date;
@@ -10,9 +21,9 @@ export async function fetchRelays(filters?: FetchFilters): Promise<Relay[]> {
     try {
         // In a real app, we might query a specific endpoint or use a proxy to avoid CORS if needed.
         // Onionoo supports CORS.
-        const response = await axios.get('https://onionoo.torproject.org/details?type=relay');
+        const response = await axios.get<{ relays: OnionooRelay[] }>('https://onionoo.torproject.org/details?type=relay');
 
-        let relays: Relay[] = response.data.relays.map((r: any) => ({
+        let relays: Relay[] = response.data.relays.map((r: OnionooRelay) => ({
             fingerprint: r.fingerprint,
             or_addresses: r.or_addresses,
             nickname: r.nickname,

@@ -19,10 +19,6 @@ export default function SmartIPInput({ label, value = '', onChange, placeholder,
     const [isValid, setIsValid] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
-    useEffect(() => {
-        validate(input);
-    }, [input]);
-
     const validate = (val: string) => {
         if (!val) {
             setError(null);
@@ -43,13 +39,18 @@ export default function SmartIPInput({ label, value = '', onChange, placeholder,
         if (valid) onChange(val);
     };
 
+    useEffect(() => {
+        validate(input);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [input]);
+
     return (
         <div className="space-y-1.5">
-            <label className="text-xs font-medium text-slate-400 ml-1">{label}</label>
+            <label className="text-xs font-medium text-gray-700 ml-1">{label}</label>
             <div className="relative group">
                 <div className={`
           absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-colors
-          ${isFocused ? 'text-accent-blue' : 'text-slate-500'}
+          ${isFocused ? 'text-gov-secondary' : 'text-gray-500'}
         `}>
                     <Globe className="w-4 h-4" />
                 </div>
@@ -61,12 +62,12 @@ export default function SmartIPInput({ label, value = '', onChange, placeholder,
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
                     className={`
-            w-full bg-slate-900/50 border rounded-lg py-2 pl-10 pr-10 text-sm text-slate-200 placeholder-slate-600 outline-none transition-all
+            w-full bg-white border rounded-lg py-2 pl-10 pr-10 text-sm text-gray-900 placeholder-gray-400 outline-none transition-all
             ${error
-                            ? 'border-red-500/50 focus:border-red-500 focus:ring-1 focus:ring-red-500/20'
+                            ? 'border-red-500 focus:border-red-600 focus:ring-1 focus:ring-red-500/20'
                             : isValid
-                                ? 'border-green-500/50 focus:border-green-500 focus:ring-1 focus:ring-green-500/20'
-                                : 'border-slate-700 focus:border-accent-blue focus:ring-1 focus:ring-accent-blue/20'
+                                ? 'border-green-500 focus:border-green-600 focus:ring-1 focus:ring-green-500/20'
+                                : 'border-gray-300 focus:border-gov-secondary focus:ring-1 focus:ring-blue-200'
                         }
           `}
                     placeholder={placeholder || "192.168.1.1 or example.com"}
@@ -78,7 +79,7 @@ export default function SmartIPInput({ label, value = '', onChange, placeholder,
                 </div>
             </div>
             {error && input && (
-                <p className="text-[10px] text-red-400 ml-1">{error}</p>
+                <p className="text-[10px] text-red-600 ml-1">{error}</p>
             )}
         </div>
     );

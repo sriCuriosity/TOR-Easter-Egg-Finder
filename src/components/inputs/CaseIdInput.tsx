@@ -25,11 +25,11 @@ export default function CaseIdInput() {
     return (
         <div className="space-y-3">
             <div className="space-y-1.5">
-                <label className="text-xs font-medium text-slate-400 ml-1">Case Reference ID</label>
+                <label className="text-xs font-medium text-gray-700 ml-1">Case Reference ID</label>
                 <div className="relative group">
                     <div className={`
             absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-colors
-            ${isFocused ? 'text-accent-blue' : 'text-slate-500'}
+            ${isFocused ? 'text-gov-secondary' : 'text-gray-500'}
           `}>
                         <FileDigit className="w-4 h-4" />
                     </div>
@@ -41,12 +41,12 @@ export default function CaseIdInput() {
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
                         className={`
-              w-full bg-slate-900/50 border rounded-lg py-2 pl-10 pr-10 text-sm text-slate-200 placeholder-slate-600 outline-none transition-all font-mono
+              w-full bg-white border rounded-lg py-2 pl-10 pr-10 text-sm text-gray-900 placeholder-gray-400 outline-none transition-all font-mono
               ${error
-                                ? 'border-red-500/50 focus:border-red-500 focus:ring-1 focus:ring-red-500/20'
+                                ? 'border-red-500 focus:border-red-600 focus:ring-1 focus:ring-red-500/20'
                                 : caseMeta.id && !error
-                                    ? 'border-green-500/50 focus:border-green-500 focus:ring-1 focus:ring-green-500/20'
-                                    : 'border-slate-700 focus:border-accent-blue focus:ring-1 focus:ring-accent-blue/20'
+                                    ? 'border-green-500 focus:border-green-600 focus:ring-1 focus:ring-green-500/20'
+                                    : 'border-gray-300 focus:border-gov-secondary focus:ring-1 focus:ring-blue-200'
                             }
             `}
                         placeholder="CASE-2024-0101-0001"
@@ -58,20 +58,20 @@ export default function CaseIdInput() {
                     </div>
                 </div>
                 {error && (
-                    <p className="text-[10px] text-red-400 ml-1">{error}</p>
+                    <p className="text-[10px] text-red-600 ml-1">{error}</p>
                 )}
             </div>
 
             {/* Warrant Guard / Authorization */}
-            <div className="flex items-start gap-2 p-2 rounded-lg bg-slate-900/50 border border-slate-800">
+            <div className="flex items-start gap-2 p-2 rounded-lg bg-gray-50 border border-gray-200">
                 <input
                     type="checkbox"
                     id="auth-check"
                     checked={caseMeta.authorized}
                     onChange={(e) => setCaseMetadata({ authorized: e.target.checked })}
-                    className="mt-0.5 rounded border-slate-600 bg-slate-800 text-accent-blue focus:ring-offset-slate-900"
+                    className="mt-0.5 rounded border-gray-300 bg-white text-gov-secondary focus:ring-offset-white"
                 />
-                <label htmlFor="auth-check" className="text-xs text-slate-400 cursor-pointer select-none">
+                <label htmlFor="auth-check" className="text-xs text-gray-700 cursor-pointer select-none">
                     I confirm this investigation is authorized under active warrant or exigent circumstances.
                 </label>
             </div>

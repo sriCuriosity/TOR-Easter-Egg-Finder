@@ -55,8 +55,8 @@ export default function EvidenceUploader() {
                 className={`
           border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-all duration-200
           ${isDragging
-                        ? 'border-accent-blue bg-accent-blue/10'
-                        : 'border-slate-600 hover:border-slate-500 hover:bg-slate-800/50'}
+                        ? 'border-gov-secondary bg-blue-50'
+                        : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'}
         `}
             >
                 <input
@@ -69,14 +69,14 @@ export default function EvidenceUploader() {
                 />
 
                 <div className="flex flex-col items-center gap-3">
-                    <div className={`p-3 rounded-full ${isDragging ? 'bg-accent-blue/20' : 'bg-slate-800'}`}>
-                        <Upload className={`w-8 h-8 ${isDragging ? 'text-accent-blue' : 'text-slate-400'}`} />
+                    <div className={`p-3 rounded-full ${isDragging ? 'bg-blue-100' : 'bg-gray-100'}`}>
+                        <Upload className={`w-8 h-8 ${isDragging ? 'text-gov-secondary' : 'text-gray-500'}`} />
                     </div>
                     <div>
-                        <p className="text-lg font-medium text-slate-200">
+                        <p className="text-lg font-medium text-gray-800">
                             {isDragging ? 'Drop files to upload' : 'Drag & drop evidence files'}
                         </p>
-                        <p className="text-sm text-slate-500 mt-1">
+                        <p className="text-sm text-gray-500 mt-1">
                             Supports PCAP, Server Logs, Email Headers
                         </p>
                     </div>
@@ -85,31 +85,31 @@ export default function EvidenceUploader() {
 
             {/* File List */}
             {files.length > 0 && (
-                <div className="bg-slate-800 rounded-lg border border-slate-700 overflow-hidden">
-                    <div className="px-4 py-2 bg-slate-900/50 border-b border-slate-700 flex justify-between items-center">
-                        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Uploaded Evidence ({files.length})</span>
+                <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+                    <div className="px-4 py-2 bg-gray-50 border-b border-gray-200 flex justify-between items-center">
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Uploaded Evidence ({files.length})</span>
                     </div>
-                    <div className="divide-y divide-slate-700">
+                    <div className="divide-y divide-gray-200">
                         {files.map((file, idx) => (
-                            <div key={`${file.name}-${idx}`} className="p-3 flex items-center justify-between hover:bg-slate-700/30 transition-colors">
+                            <div key={`${file.name}-${idx}`} className="p-3 flex items-center justify-between hover:bg-gray-50 transition-colors">
                                 <div className="flex items-center gap-3 overflow-hidden">
                                     {getFileIcon(file.name)}
                                     <div className="min-w-0">
-                                        <p className="text-sm font-medium text-slate-200 truncate">{file.name}</p>
-                                        <p className="text-xs text-slate-500">{(file.size / 1024).toFixed(1)} KB</p>
+                                        <p className="text-sm font-medium text-gray-900 truncate">{file.name}</p>
+                                        <p className="text-xs text-gray-500">{(file.size / 1024).toFixed(1)} KB</p>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center gap-3">
                                     {/* Status Indicator (Mock) */}
-                                    <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-green-500/10 border border-green-500/20">
-                                        <CheckCircle2 className="w-3 h-3 text-green-500" />
-                                        <span className="text-[10px] font-medium text-green-400">Ready</span>
+                                    <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-green-50 border border-green-200">
+                                        <CheckCircle2 className="w-3 h-3 text-gov-success" />
+                                        <span className="text-[10px] font-medium text-green-700">Ready</span>
                                     </div>
 
                                     <button
                                         onClick={(e) => { e.stopPropagation(); removeEvidenceFile(file.name); }}
-                                        className="p-1.5 text-slate-400 hover:text-red-400 hover:bg-red-400/10 rounded transition-colors"
+                                        className="p-1.5 text-gray-500 hover:text-red-700 hover:bg-red-50 rounded transition-colors"
                                     >
                                         <X className="w-4 h-4" />
                                     </button>
