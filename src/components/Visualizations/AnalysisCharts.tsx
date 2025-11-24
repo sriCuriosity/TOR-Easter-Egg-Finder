@@ -18,8 +18,8 @@ export default function AnalysisCharts({ evidenceData, relayData }: AnalysisChar
     const formatTime = (tick: number) => format(new Date(tick), 'HH:mm:ss');
 
     return (
-        <div className="h-64 w-full bg-slate-900/50 border border-slate-700 rounded-lg p-4">
-            <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
+        <div className="h-64 w-full bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
+            <h3 className="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-4">
                 Traffic Pattern Correlation
             </h3>
 
@@ -27,33 +27,33 @@ export default function AnalysisCharts({ evidenceData, relayData }: AnalysisChar
                 <AreaChart data={data}>
                     <defs>
                         <linearGradient id="colorEvidence" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3} />
-                            <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+                            <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.4} />
+                            <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.05} />
                         </linearGradient>
                         <linearGradient id="colorRelay" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#ef4444" stopOpacity={0.3} />
-                            <stop offset="95%" stopColor="#ef4444" stopOpacity={0} />
+                            <stop offset="5%" stopColor="#ef4444" stopOpacity={0.4} />
+                            <stop offset="95%" stopColor="#ef4444" stopOpacity={0.05} />
                         </linearGradient>
                     </defs>
 
-                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
                     <XAxis
                         dataKey="time"
                         tickFormatter={formatTime}
-                        stroke="#64748b"
-                        tick={{ fontSize: 10 }}
+                        stroke="#4b5563"
+                        tick={{ fontSize: 12, fill: '#374151' }}
                         minTickGap={30}
                     />
                     <YAxis
-                        stroke="#64748b"
-                        tick={{ fontSize: 10 }}
+                        stroke="#4b5563"
+                        tick={{ fontSize: 12, fill: '#374151' }}
                         tickFormatter={(val) => `${(val / 1024).toFixed(0)}KB`}
                     />
                     <Tooltip
-                        contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155', fontSize: '12px' }}
+                        contentStyle={{ backgroundColor: '#ffffff', borderColor: '#d1d5db', fontSize: '12px', color: '#111827' }}
                         labelFormatter={(label) => format(new Date(label), 'PP pp')}
                     />
-                    <Legend />
+                    <Legend wrapperStyle={{ fontSize: '12px' }} />
 
                     <Area
                         type="monotone"

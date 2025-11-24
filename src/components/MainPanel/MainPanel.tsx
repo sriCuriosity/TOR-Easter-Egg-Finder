@@ -20,7 +20,7 @@ export default function MainPanel() {
     ]), []);
 
     return (
-        <main className="flex-1 bg-gray-50 relative flex flex-col overflow-hidden">
+        <main className="flex-1 bg-gray-50 relative flex flex-col overflow-y-auto">
             {/* Graph View (Top) */}
             <div id="graph-section" className="flex-1 relative border-b border-gray-200 bg-white">
                 <RelayGraph data={results.graph || { nodes: [], links: [] }} />
